@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Pet Shop Database" Class="PetShopDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-ETCNUFV\SQLEXPRESS;Initial Catalog=&quot;Pet Shop Database&quot;;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="PetShop.Properties.Settings" SettingsPropertyName="Pet_Shop_DatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="Account_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StaffRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Account_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="StaffRole_Account" Member="StaffRole" ThisKey="StaffRole_ID" OtherKey="StaffRole_ID" Type="StaffRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Item" Member="Items">
+    <Type Name="Item">
+      <Column Name="Item_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Item_Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Item_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Item_Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Item_Availability" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Item_Photo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Item_Log" Member="Logs" ThisKey="Item_ID" OtherKey="Item_ID" Type="Log" />
+      <Association Name="Item_Purchase" Member="Purchases" ThisKey="Item_ID" OtherKey="Item_ID" Type="Purchase" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Logs" Member="Logs">
+    <Type Name="Log">
+      <Column Name="Logs_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Logs_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Logs_Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Staff_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Purchase_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pet_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Owners_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Origin_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Item_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Item_Log" Member="Item" ThisKey="Item_ID" OtherKey="Item_ID" Type="Item" IsForeignKey="true" />
+      <Association Name="Origin_Log" Member="Origin" ThisKey="Origin_ID" OtherKey="Origin_ID" Type="Origin" IsForeignKey="true" />
+      <Association Name="Owner_Log" Member="Owner" ThisKey="Owners_ID" OtherKey="Owners_ID" Type="Owner" IsForeignKey="true" />
+      <Association Name="Pet_Log" Member="Pet" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Pet" IsForeignKey="true" />
+      <Association Name="Purchase_Log" Member="Purchase" ThisKey="Purchase_ID" OtherKey="Purchase_ID" Type="Purchase" IsForeignKey="true" />
+      <Association Name="Staff_Log" Member="Staff" ThisKey="Staff_ID" OtherKey="Staff_ID" Type="Staff" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Origin" Member="Origins">
+    <Type Name="Origin">
+      <Column Name="Origin_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Origin_FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Origin_LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Origin_ContactNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Origin_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Origin_Log" Member="Logs" ThisKey="Origin_ID" OtherKey="Origin_ID" Type="Log" />
+      <Association Name="Origin_Pet" Member="Pets" ThisKey="Origin_ID" OtherKey="Origin_ID" Type="Pet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Owners" Member="Owners">
+    <Type Name="Owner">
+      <Column Name="Owners_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Owners_FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Owners_LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Owners_ContactNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Owners_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Owner_Log" Member="Logs" ThisKey="Owners_ID" OtherKey="Owners_ID" Type="Log" />
+      <Association Name="Owner_Pet" Member="Pets" ThisKey="Owners_ID" OtherKey="Owners_ID" Type="Pet" />
+      <Association Name="Owner_Purchase" Member="Purchases" ThisKey="Owners_ID" OtherKey="Owners_ID" Type="Purchase" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pet" Member="Pets">
+    <Type Name="Pet">
+      <Column Name="Pet_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pet_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Sex" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Pedigree" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Color" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Birthday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Growth" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Vaccine_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pet_Info" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pet_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Origin_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Owners_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pet_Photo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Pet_Log" Member="Logs" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Log" />
+      <Association Name="Pet_Purchase" Member="Purchases" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Purchase" />
+      <Association Name="Origin_Pet" Member="Origin" ThisKey="Origin_ID" OtherKey="Origin_ID" Type="Origin" IsForeignKey="true" />
+      <Association Name="Owner_Pet" Member="Owner" ThisKey="Owners_ID" OtherKey="Owners_ID" Type="Owner" IsForeignKey="true" />
+      <Association Name="Vaccine_Pet" Member="Vaccine" ThisKey="Vaccine_ID" OtherKey="Vaccine_ID" Type="Vaccine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Purchase" Member="Purchases">
+    <Type Name="Purchase">
+      <Column Name="Purchase_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pet_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Item_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Item_Quantity" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Purchase_Total" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Purchase_Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Owners_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Customer_Number" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Staff_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Purchase_Log" Member="Logs" ThisKey="Purchase_ID" OtherKey="Purchase_ID" Type="Log" />
+      <Association Name="Item_Purchase" Member="Item" ThisKey="Item_ID" OtherKey="Item_ID" Type="Item" IsForeignKey="true" />
+      <Association Name="Owner_Purchase" Member="Owner" ThisKey="Owners_ID" OtherKey="Owners_ID" Type="Owner" IsForeignKey="true" />
+      <Association Name="Pet_Purchase" Member="Pet" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Pet" IsForeignKey="true" />
+      <Association Name="Staff_Purchase" Member="Staff" ThisKey="Staff_ID" OtherKey="Staff_ID" Type="Staff" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Staff" Member="Staffs">
+    <Type Name="Staff">
+      <Column Name="Staff_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Staff_FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Staff_LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Staff_Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Staff_Photo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Staff_Log" Member="Logs" ThisKey="Staff_ID" OtherKey="Staff_ID" Type="Log" />
+      <Association Name="Staff_Purchase" Member="Purchases" ThisKey="Staff_ID" OtherKey="Staff_ID" Type="Purchase" />
+      <Association Name="StaffRole_Staff" Member="StaffRole" ThisKey="StaffRole_ID" OtherKey="StaffRole_ID" Type="StaffRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StaffRole" Member="StaffRoles">
+    <Type Name="StaffRole">
+      <Column Name="StaffRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StaffRole_Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="StaffRole_Account" Member="Accounts" ThisKey="StaffRole_ID" OtherKey="StaffRole_ID" Type="Account" />
+      <Association Name="StaffRole_Staff" Member="Staffs" ThisKey="StaffRole_ID" OtherKey="StaffRole_ID" Type="Staff" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vaccine" Member="Vaccines">
+    <Type Name="Vaccine">
+      <Column Name="Vaccine_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Vaccine_Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Vaccine_Pet" Member="Pets" ThisKey="Vaccine_ID" OtherKey="Vaccine_ID" Type="Pet" />
+    </Type>
+  </Table>
+</Database>

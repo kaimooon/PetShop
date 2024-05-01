@@ -1,0 +1,54 @@
+﻿<Window x:Class="PetShop.Home_Page"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetShop"
+        mc:Ignorable="d"
+        Title="Home Page" Height="990" Width="1440">
+    <Window.Background>
+        <ImageBrush ImageSource="/BackG.png"/>
+    </Window.Background>
+    <Grid>
+        <Label Content="Label" HorizontalContentAlignment="Center" x:Name="lbGetDate" HorizontalAlignment="Left" Height="59" Margin="31,29,0,0" VerticalAlignment="Top" Width="280" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Label Content="Admin" HorizontalContentAlignment="Center" x:Name="lbAdmin" HorizontalAlignment="Center" Height="59" Margin="0,29,0,0" VerticalAlignment="Top" Width="280" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Button Content="" x:Name="btPet" HorizontalAlignment="Left" Margin="214,225,0,0" VerticalAlignment="Top" Height="233" Width="240" BorderBrush="Black" Click="btPet_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Cat and Dog.jpg" Stretch="Fill" TileMode="None"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Pet Shop" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="91" Margin="0,111,0,0" VerticalAlignment="Top" Width="324" FontSize="72" FontFamily="Britannic Bold" BorderThickness="1" Foreground="Black" FontWeight="Bold" Background="White" BorderBrush="Black"/>
+        <Button Content="" x:Name="btOwner" HorizontalAlignment="Left" Margin="214,588,0,0" VerticalAlignment="Top" Height="232" Width="240" BorderBrush="#00000000">
+            <Button.Background>
+                <ImageBrush ImageSource="/Owner.png" Stretch="Fill" TileMode="None"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" x:Name="btItems" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Height="233" Width="240" BorderBrush="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Items.jpg" Stretch="Fill" TileMode="None"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" x:Name="btOrigin" HorizontalAlignment="Center" Margin="0,588,0,0" VerticalAlignment="Top" Height="232" Width="240" BorderBrush="#00000000">
+            <Button.Background>
+                <ImageBrush ImageSource="/Origin.png" Stretch="Uniform" TileMode="None"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" x:Name="btPurchase" HorizontalAlignment="Left" Margin="994,225,0,0" VerticalAlignment="Top" Height="233" Width="240" BorderBrush="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Purchase.jpg" Stretch="Fill" TileMode="None"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" x:Name="btStaff" HorizontalAlignment="Left" Margin="994,588,0,0" VerticalAlignment="Top" Height="232" Width="240" BorderBrush="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Staff.png" Stretch="Fill" TileMode="None"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Log Out" x:Name="btnLogOut" HorizontalAlignment="Left" Height="59" Margin="1114,29,0,0" VerticalAlignment="Top" Width="280" FontSize="48" FontFamily="Britannic Bold" Click="btnLogOut_Click"/>
+        <Label Content="Origin" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="64" Margin="0,847,0,0" VerticalAlignment="Top" Width="152" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Label Content="Owner" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="64" Margin="258,847,0,0" VerticalAlignment="Top" Width="152" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Label Content="Pet" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="64" Margin="291,487,0,0" VerticalAlignment="Top" Width="86" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Label Content="Purchase" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="64" Margin="1008,487,0,0" VerticalAlignment="Top" Width="212" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Label Content="Item" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="64" Margin="0,487,0,0" VerticalAlignment="Top" Width="104" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+        <Label Content="Staff" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="64" Margin="1038,847,0,0" VerticalAlignment="Top" Width="152" FontSize="48" FontFamily="Britannic Bold" Background="White" BorderThickness="1" BorderBrush="Black"/>
+    </Grid>
+</Window>
