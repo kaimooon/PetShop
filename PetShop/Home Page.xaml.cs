@@ -37,5 +37,10 @@ namespace PetShop
         {
 
         }
+
+        private void btOwner_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
